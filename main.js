@@ -1,9 +1,11 @@
+// Captura de elementos
 let inputForm = document.querySelector('.todo-add-item__form')
 let inputItem = document.querySelector('.todo-add-item__input')
 let todoList = document.querySelector('.todo-list')
 let listLisTags = todoList.getElementsByTagName('li')
 let todoItem;
 
+// Criação da tarefa
 let tasks = [
     {
         name: null,
@@ -13,14 +15,15 @@ let tasks = [
 ]
 
 
+
+
 //Listeners
 inputForm.addEventListener("submit" , function(e){  
     e.preventDefault()   
     todoItem = inputItem.value    
     
     addTask(todoItem)
-    renderTasks()
-  
+    renderTasks()  
     clearInput()    
 })
 
@@ -30,13 +33,14 @@ todoList.addEventListener('click' , clickInTodoList)
 
 
 
-
-//Functions
+// Reseta o input
 function clearInput(){
     inputItem.value = ''
     inputItem.focus()
 }
 
+
+// Renderiza a lista de tarefas
 function renderTasks(){
     todoList.innerHTML = ''
 
@@ -45,6 +49,8 @@ function renderTasks(){
     })
 }
 
+
+// Gera cada tarefa
 function generateTask(obj){            
 
         let buttonCancel = document.createElement('button')
@@ -99,28 +105,33 @@ function generateTask(obj){
         li.appendChild(div)
         li.appendChild(iconRemove)        
 
-        return li
-    
+        return li    
 }
 
+
+// Adiciona Tarefa
 function addTask(task){
     if (task !== '') {
-
         tasks.push({
             name: task,
             createAt: Date.now(),
             completed: false
         })
-    }else{        
+    }
+    else{        
         clearInput()
         return
-    }
-       
+    }       
 }   
 
 
+
+
+
+// Função gerada no Listener de click da minha tarefa
 function clickInTodoList(e){
     let dataEvent = e.target.getAttribute('data-event')
+    
     if (!dataEvent) {
         return
     }
@@ -134,7 +145,7 @@ function clickInTodoList(e){
     let currentElementIndex = [...listLisTags].indexOf(currentElement)
     
 
-    //Click in elements
+    //Elementos da tarefa que possuem ações ao serem clicados
     let events = {
         buttonCheck: function () {  
             tasks[currentElementIndex].completed = !tasks[currentElementIndex].completed             
@@ -151,6 +162,7 @@ function clickInTodoList(e){
             renderTasks()
         },    
             
+
         iconEdit: function () {   
             let editContainer = currentElement.querySelector('.todo-list__edit-container');        
            
@@ -190,12 +202,11 @@ function clickInTodoList(e){
 
             currentElement.querySelector('.todo-list__edit-input').value = tasks[currentElementIndex].name
             console.dir(todoList)
-        }
-        
+        }        
     }
      
 
-    //Existindo o data-event no elemento clicado
+    //Existindo um evento no elemento clicado
     if(events[dataEvent]){
         events[dataEvent]()
     }
@@ -203,8 +214,6 @@ function clickInTodoList(e){
 }
 
 
-//Limpando primeiro elemento vazio
+//Limpando elemento vazio
 tasks.splice(0, 1)
 
-//Renderizando na tela
-renderTasks()

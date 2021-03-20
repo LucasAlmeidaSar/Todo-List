@@ -1,14 +1,20 @@
+/* Reset Básico */
 *,
 *::before,
 *::after{
     margin:0;
     padding:0;
-    box-sizing:inherit;
+    box-sizing:border-box;
     letter-spacing: inherit;
 }
 
-html{font-size:62.5%;}
 
+
+/* Ajustes Gerais */
+body,html{
+    height: 100%;
+    font-size: 62.5%;
+}
 
 body{
     background-color: rgb(25, 14, 65);
@@ -17,23 +23,18 @@ body{
     display: flex;
 }
 
-body,html{
-    height:100%;
-}
+ul,li{  list-style-type: none;  }
 
-ul,li{
-    list-style-type: none;
-}
-
-button{
-    cursor:pointer;
-}
+button{  cursor:pointer;  }
 
 i{
     font-size:18px;
     color:rgb(77, 77, 77);    
 }
 
+
+
+/* App */
 .todo-list__app{
    background-color:rgb(247, 247, 247);
    border-radius: 10px;   
@@ -41,6 +42,9 @@ i{
    margin: auto;   
 }
 
+
+
+/* Container do Input */
 .todo-add-item__container{
     background-color:#70B6E6;
     padding: 3rem 2rem;
@@ -96,6 +100,10 @@ i{
     transform: translateY(1px);
 }
 
+
+
+
+/* Container das Tarefas */
 .todo-list__container{  
     padding:2rem; 
     overflow: auto; 
@@ -114,7 +122,6 @@ i{
     position:relative;    
     margin-bottom: 10px;
 }
-
 
 .todo-list__item-check{
     grid-column: 1/2;
@@ -136,9 +143,7 @@ i{
     color:#6C51E9;     
 }
 
-.fa-check.not-check{
-    display:none;
-}
+.fa-check.not-check{  display:none;  }
 
 .todo-list__item-name{
     text-decoration: line-through;
@@ -148,9 +153,8 @@ i{
     padding:1rem;
     font-size:1.3rem;
 }
-.todo-list__item-name.not-check{
-    text-decoration: none;     
-}
+
+.todo-list__item-name.not-check{  text-decoration: none;  }
 
 .todo-list__icon-edit{    
     color: #6C51E9;
@@ -161,7 +165,6 @@ i{
     grid-column:4/-1;
     color: rgb(99, 99, 99);
 }
-
 
 .todo-list__icon-edit,
 .todo-list__icon-remove{
@@ -193,8 +196,9 @@ i{
 }
 
 
-/*Edit Container*/
 
+
+/*Container da Edição de tarefas*/
 .todo-list__edit-container{
     justify-content:space-evenly;
     align-items: center;
@@ -209,7 +213,6 @@ i{
     box-shadow: 0 0 10px rgba(18, 16, 126, 0.8);   
     display:none;
 }
-
 
 .todo-list__edit-input{
     background-color: rgba(245, 244, 244, 0.788);
@@ -249,5 +252,3 @@ i{
     background-color: #6f3131;
     color: rgb(255, 245, 230);
 }
-
-
